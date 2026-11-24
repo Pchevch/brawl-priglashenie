@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>СЕКРЕТНАЯ ОПЕРАЦИЯ — Brawl Stars</title>
+  <meta name="description" content="Шуточное приглашение сыграть в Brawl Stars" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Декоративные плавающие элементы -->
+  <div class="bg-decor" aria-hidden="true">
+    <span class="float-star s1">⭐</span>
+    <span class="float-star s2">🏆</span>
+    <span class="float-star s3">🎯</span>
+    <span class="float-star s4">💥</span>
+    <span class="float-star s5">⭐</span>
+    <span class="float-star s6">🛡️</span>
+  </div>
+
+  <!-- Холст для конфетти -->
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <main class="app">
+
+    <!-- ЭКРАН 1: ПРИВЕТСТВИЕ -->
+    <section class="screen active" data-screen="1">
+      <div class="badge">📡 ВХОДЯЩЕЕ СООБЩЕНИЕ</div>
+      <h1 class="title title-1">
+        <span class="line">ВНИМАНИЕ!</span>
+        <span class="line accent">ПОСТУПИЛО</span>
+        <span class="line accent2">ОСОБО ВАЖНОЕ ПРЕДЛОЖЕНИЕ</span>
+      </h1>
+      <p class="subtitle">
+        Вы были выбраны для участия в <strong>секретной операции</strong>.
+        Ваша задача — сыграть несколько каток в <span class="game-name">Brawl Stars</span>.
+      </p>
+      <div class="trophy-row" aria-hidden="true">
+        <span class="trophy t1">🏆</span>
+        <span class="trophy t2">⭐</span>
+        <span class="trophy t3">🏆</span>
+      </div>
+      <button class="btn btn-primary btn-big" id="btn-next-1">
+        УЗНАТЬ ПОДРОБНОСТИ
+        <span class="btn-arrow">▶</span>
+      </button>
+      <p class="fine-print">Нажимая кнопку, вы соглашаетесь с правилами секретной операции (нет)</p>
+    </section>
+
+    <!-- ЭКРАН 2: АНКЕТА -->
+    <section class="screen" data-screen="2">
+      <div class="badge">📝 АНКЕТА КАНДИДАТА</div>
+      <h2 class="title title-2">ПРОВЕРКА НА ПРОЧНОСТЬ</h2>
+      <p class="subtitle small">Ответьте честно — от этого зависит ваше место в команде. Можно пропустить.</p>
+
+      <div class="quiz" id="quiz">
+        <!-- Вопросы генерируются в script.js -->
+      </div>
+
+      <div class="quiz-actions">
+        <button class="btn btn-ghost" id="btn-skip">ПРОПУСТИТЬ ⏭</button>
+        <button class="btn btn-primary" id="btn-quiz-next" disabled>ДАЛЕЕ <span class="btn-arrow">▶</span></button>
+      </div>
+    </section>
+
+    <!-- ЭКРАН 3: ГЛАВНЫЙ ВЫБОР -->
+    <section class="screen" data-screen="3">
+      <div class="badge">⚠️ ФИНАЛЬНОЕ РЕШЕНИЕ</div>
+      <h2 class="title title-3">Ну что, <span class="accent">пойдём катать?</span></h2>
+      <p class="subtitle small">Тиммейт уже зашёл в лобби. Он ждёт. Он не будет ждать вечно.</p>
+
+      <div class="choice-area" id="choice-area">
+        <button class="btn btn-yes btn-big" id="btn-yes">
+          ДА, ПОГНАЛИ!
+          <span class="btn-arrow">⚔️</span>
+        </button>
+        <div class="no-taunt" id="no-taunt" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ЭКРАН 4: НАГРАДА -->
+    <section class="screen" data-screen="4">
+      <div class="badge gold">🏆 ЗАЯВКА ОДОБРЕНА</div>
+      <h2 class="title title-win">ЗАЯВКА<br /><span class="accent">ОДОБРЕНА!</span></h2>
+      <p class="subtitle">
+        Поздравляем! Вы получили возможность провести несколько
+        <strong>легендарных каток</strong> со мной. Ранг не важен —
+        важен стиль и умение вовремя нажать «авто-стрельбу».
+      </p>
+      <div class="reward-cards" aria-hidden="true">
+        <div class="reward-card rc1">🎁</div>
+        <div class="reward-card rc2">⭐</div>
+        <div class="reward-card rc3">🏆</div>
+        <div class="reward-card rc4">💣</div>
+      </div>
+      <button class="btn btn-primary btn-big" id="btn-telegram">
+        ОТПРАВИТЬ СОГЛАСИЕ
+        <span class="btn-arrow">✈️</span>
+      </button>
+      <p class="fine-print" id="tg-hint">Откроется Telegram со свежим приглашением</p>
+    </section>
+
+  </main>
+
+  <!-- Кнопка «НЕТ» живёт вне экранов: position:fixed + показ только на 3-м экране -->
+  <button class="btn btn-no" id="btn-no" type="button">НЕТ, НЕ ХОЧУ</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
